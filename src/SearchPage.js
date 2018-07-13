@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 
 class SearchPage extends Component {
@@ -23,7 +22,7 @@ class SearchPage extends Component {
 		let showingBooks = books
 		if (query) {
 			const match = new RegExp(escapeRegExp(query), 'i')
-			showingBooks = books.filter((book) => match.test(book.name))
+			showingBooks = books.filter((book) => match.test(book.title))
 			console.log(showingBooks)
 		}
 
@@ -31,7 +30,10 @@ class SearchPage extends Component {
 
 			<div className="search-books">
 				<div className="search-books-bar">
-					<a className="close-search" onClick={() => this.setState({ showSearchPagePage: false })}>Close</a>
+					<Link
+						to='/'
+						className='close-search'
+					></Link>
 					<div className="search-books-input-wrapper">
 						{/*
 							NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -61,11 +63,11 @@ class SearchPage extends Component {
 				<ol className='book-list'>
 					{showingBooks.map((book) => (
 						<li key={book.id} className='book-list-item'>
-						 <div className='book-avatar' style={{
-							 backgroundImage: `url(${book.avatarURL})`
-						 }}/>
+
+						<div className="book-avatar" style={{ backgroundImage: 'url(' + book.imageLinks.smallThumbnail + ')' }}></div>
+
 						 <div className='book-details'>
-							<p>My book</p>
+							<p>{book.title}</p>
 						 </div>
 						</li>
 					))}
