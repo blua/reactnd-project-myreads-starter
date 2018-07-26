@@ -41,7 +41,7 @@ class Book extends Component {
 							defaultValue={book.shelf ? book.shelf : "none"}
 							onChange={event => update(book, event.target.value)}
 						>
-							<option value="none" disabled>Move to...</option>
+							<option value="disabled" disabled>Move to...</option>
 							<option value="currentlyReading">Currently Reading</option>
 							<option value="wantToRead">Want To Read</option>
 							<option value="read">Read</option>
@@ -55,7 +55,7 @@ class Book extends Component {
 						which only happens in the search page - in the main page books are
 						already organized by shelf, making icons redundant
 					*/}
-					{shelves ? <span  title={this.getShelfTitle(shelves, book)}>{this.getShelfIcon(shelves, book)} </span> : ''}
+					{shelves ? <span title={this.getShelfTitle(shelves, book)}>{this.getShelfIcon(shelves, book)} </span> : ''}
 					{book.title}
 				</div>
 				<div className="book-authors">

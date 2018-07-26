@@ -16,7 +16,7 @@ class SearchPage extends Component {
 
   search = query => {
     this.setState({ query: query})
-    if (query) {
+    if (query.length > 0) {
       BooksAPI.search(query).then(searchResult => {
         if (!searchResult.error) {
           searchResult.map(book => {
