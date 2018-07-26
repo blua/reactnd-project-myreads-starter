@@ -24,6 +24,7 @@ class SearchPage extends Component {
             if (bookIndex > -1) {
               book.shelf = this.props.books[bookIndex].shelf
             }
+						return book
           })
         }
         this.setState({searchResult})
@@ -35,7 +36,7 @@ class SearchPage extends Component {
 
 	render() {
 
-		const {shelves, books, update} = this.props
+		const {shelves, update} = this.props
 		const {query, searchResult} = this.state
 
 		return (

@@ -28,7 +28,7 @@ class Book extends Component {
 		const {book, shelves, update} = this.props
 
 		return (
-			<div className="book" title={this.getShelfTitle(shelves, book)}>
+			<div className="book">
 				<div className="book-top">
 					<div
 						className="book-cover"
@@ -55,7 +55,7 @@ class Book extends Component {
 						which only happens in the search page - in the main page books are
 						already organized by shelf, making icons redundant
 					*/}
-					{shelves ? <span>{this.getShelfIcon(shelves, book)} </span> : ''}
+					{shelves ? <span  title={this.getShelfTitle(shelves, book)}>{this.getShelfIcon(shelves, book)} </span> : ''}
 					{book.title}
 				</div>
 				<div className="book-authors">
