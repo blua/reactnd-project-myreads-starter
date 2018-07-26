@@ -109,7 +109,6 @@ body, .app {
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -123,7 +122,8 @@ body, .app {
   width: 140px;
 }
 .book-title,
-.book-authors {
+.book-authors,
+.book-shelf {
   font-size: 0.8em;
 }
 .book-title {
@@ -131,6 +131,12 @@ body, .app {
 }
 .book-authors {
   color: #999;
+}
+
+.book-shelf {
+  background-color: #eee;
+	text-align: center;
+	padding: 3px;
 }
 
 .book-top {
@@ -166,9 +172,15 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+	width: 90%;
+	height: 90%;
 }
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+.book-list li {
+	display: block;
 }
