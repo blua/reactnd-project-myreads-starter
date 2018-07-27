@@ -2,33 +2,22 @@ import React, { Component } from 'react'
 
 class Book extends Component {
 
-	/*	Get shelf icon to display before book title and shelf title to display
-	when icon is hovered. I had to create 2 functions as I didn't succeed
-	in accessing the title and icon separately inside JSX
-	when I returned them from the same function*/
-
-	getShelfTitle(shelves, book) {
-			const shelfIndex = shelves.findIndex(x => x.id === book.shelf)
-			if (shelfIndex > -1) {
-				const title = shelves[shelfIndex].title
-				return title
-			}
-		}
-
-	getShelfIcon(shelves, book) {
-		const shelfIndex = shelves.findIndex(x => x.id === book.shelf)
-		if (shelfIndex > -1) {
-			const icon = shelves[shelfIndex].icon
-			return icon
-		}
-	}
-
 	render() {
 
 		const {book, shelves, update} = this.props
 
+		/* Only show shelf icon if shelves is defined,
+			which only happens in the search page - in the main page books are
+			already organized by shelf, making icons redundant */
+
+		if (shelves && book.shelf) {
+			const found = shelves.find(({ id }) => id === book.shelf);
+			book.icon = found.icon;
+			book.shelfTitle = found.title;
+		}
+
 		return (
-			<div className="book">
+			<div className="book" title={book.shelfTitle}>
 				<div className="book-top">
 					<div
 						className="book-cover"
@@ -50,12 +39,7 @@ class Book extends Component {
 		</div>
 				</div>
 				<div className="book-title">
-					{/*
-						Only show shelf icon if shelves is defined,
-						which only happens in the search page - in the main page books are
-						already organized by shelf, making icons redundant
-					*/}
-					{shelves ? <span title={this.getShelfTitle(shelves, book)}>{this.getShelfIcon(shelves, book)} </span> : ''}
+					<span>{book.icon} </span>
 					{book.title}
 				</div>
 				<div className="book-authors">

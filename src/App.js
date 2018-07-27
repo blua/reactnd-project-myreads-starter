@@ -37,12 +37,14 @@ class BooksApp extends Component {
 
 	/* Same for when component is updated. This was the only way I managed to get
 	the main page reflect changes made in the search page
-	without having to refresh the browser */
+	without having to refresh the browser
 	componentDidUpdate() {
 		BooksAPI.getAll().then((books) => {
 			this.setState(state => state.books = { books })
 		})
 	}
+	*/
+
 
 	/* Method to add a book to a shelf or move it to a different shelf */
 	update = (book, shelf) => {
